@@ -9,7 +9,7 @@ export function App() {
     isLoading,
     errorBody,
     data,
-  } = useFetch({
+  }: {data: object, errorBody: string, isLoading: boolean, isError: boolean}= useFetch({
     url: input,
   });
   const keys = Object.keys(data);
@@ -32,7 +32,7 @@ export function App() {
           </form>
         </nav>
       </header>
-      {data?.data ? (
+      {data ? (
         <div className="w-11/12 flex flex-col items-center mt-3 rounded">
           {keys?.map((item, key) => {
             return <ShowData data={data[item]} key={key} items={item}/>;
