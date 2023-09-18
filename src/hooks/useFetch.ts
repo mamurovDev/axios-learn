@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useFetch = ({ url, isReq }: { url: string, isReq: boolean }) => {
+export const useFetch = ({ url }: { url: string }) => {
   const [isError, setIsError] = useState(false);
   const [errorBody, setErrorBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -22,11 +22,9 @@ export const useFetch = ({ url, isReq }: { url: string, isReq: boolean }) => {
       setIsLoading(false);
     };
 
-    if (isReq && url) {
-      fetchData()
+    if (url) {
+      fetchData();
     }
-  }, [url, isReq]);
+  }, [url]);
   return { isError, isLoading, data, errorBody };
 };
-
-
